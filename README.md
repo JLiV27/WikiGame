@@ -1,4 +1,4 @@
-# WikiGame
+# wikiGame
 
 There’s a wikipedia article to explain it! [Read up](https://en.wikipedia.org/wiki/Wikipedia:Wiki_Game).
 
