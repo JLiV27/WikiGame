@@ -105,5 +105,9 @@ BufferedReader getBufferedReader;() {
     return reader;
     }
         }
+
+        private BufferedReader getBufferedReader(String startLink) {
+            return null;
+        }
     }
 }
