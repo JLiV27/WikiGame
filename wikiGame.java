@@ -29,6 +29,8 @@ public class wikiGame implements ActionListener {
     public String[] doubleSourceLinks;
     public String finalOutput;
 
+    public int depth = 1;
+
     public wikiGame() {
         prepareGUI();
     }
