@@ -29,7 +29,7 @@ public class wikiGame implements ActionListener {
     public String[] doubleSourceLinks;
     public String finalOutput;
 
-    public int depth = 1;
+    public int maxDepth = 1;
 
     public wikiGame() {
         prepareGUI();
@@ -124,7 +124,7 @@ public class wikiGame implements ActionListener {
                 taLink = new JTextArea("https://en.wikipedia.org/wiki/Pineapple"); //creates JText Area Object
                 taLink.setBounds(50, 5, WIDTH - 100, HEIGHT - 50);
 
-                JButton readButton = new JButton("Read HTML");
+                JButton readButton = new JButton("Check Wiki");
                 readButton.setActionCommand("Read");
                 readButton.addActionListener(new ButtonClickListener()); //adds a listener to whenever the button is clicked
 
@@ -192,6 +192,8 @@ public class wikiGame implements ActionListener {
                             }
                         }
                     }
+                    findLink(taLink.getText(),taSearch.getText(),maxDepth);
+
                     taOutput.setText(finalOutput);
                 }
                 try {
@@ -204,6 +206,25 @@ public class wikiGame implements ActionListener {
                     System.out.println(ex);
                 }
             }
+        }
+
+        public boolean findLink(String startLink, String endLink, int depth) {
+
+            System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink);
+
+            // BASE CASE
+            if () {
+                findLink(taLink.getText(),taSearch.getText(),maxDepth);
+            } else if () {
+
+            }
+
+            // GENERAL RECURSIVE CASE
+            else {
+
+            }
+
+            return false;
         }
 
         private BufferedReader getBufferedReader() {
