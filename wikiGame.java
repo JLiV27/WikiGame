@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Objects;
 
 public class wikiGame implements ActionListener {
     private JFrame mainFrame;
@@ -28,6 +29,7 @@ public class wikiGame implements ActionListener {
     public String[] singleSourceLinks;
     public String[] doubleSourceLinks;
     public String finalOutput;
+    String[] termCheck;
 
     public int maxDepth = 1;
 
@@ -184,7 +186,7 @@ public class wikiGame implements ActionListener {
                     }
                     taOutput.setText(readOutput); //sets all links to readoutput so readoutput is not considered null (dont know why that was an issue)
 
-                    String[] termCheck = taOutput.getText().split("\n"); //splits each link back into individual lines to be searched 1 by 1
+                    termCheck = taOutput.getText().split("\n"); //splits each link back into individual lines to be searched 1 by 1
                     for (int i = 0; i < manyTerms.length; i++) { //runs for loop for every search term identified
                         for (int j = 0; j < termCheck.length; j++) { //checks every line for a given search term
                             if(termCheck[j].contains(manyTerms[i])){
@@ -213,15 +215,18 @@ public class wikiGame implements ActionListener {
             System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink);
 
             // BASE CASE
-            if () {
-                findLink(taLink.getText(),taSearch.getText(),maxDepth);
+            if (Objects.equals(finalOutput, endLink)) {
+                //taOutput.setText(endLink);
+                System.out.println(endLink);
+                return true;
             } else if () {
 
             }
 
             // GENERAL RECURSIVE CASE
             else {
-
+                findLink(taLink.getText(),taSearch.getText(),maxDepth);
+                depth++;
             }
 
             return false;
