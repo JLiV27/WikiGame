@@ -219,8 +219,8 @@ public class wikiGame implements ActionListener {
                 //taOutput.setText(endLink);
                 System.out.println(endLink);
                 return true;
-            } else if (finalOutput != endLink) {
-
+            } else if (depth == maxDepth) {
+                taOutput.setText("Could not parse Wiki Links");
             }
 
             // GENERAL RECURSIVE CASE
