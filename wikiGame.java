@@ -219,7 +219,7 @@ public class wikiGame implements ActionListener {
                 //taOutput.setText(endLink);
                 System.out.println(endLink);
                 return true;
-            } else if () {
+            } else if (finalOutput != endLink) {
 
             }
 
