@@ -29,9 +29,11 @@ public class wikiGame implements ActionListener {
     public String[] singleSourceLinks;
     public String[] doubleSourceLinks;
     public String finalOutput;
-    String[] termCheck;
+    public String[] termCheck;
+    public String[] specCheck;
 
     public int maxDepth = 1;
+    public int checkNumber = 0;
 
     public wikiGame() {
         prepareGUI();
@@ -187,16 +189,20 @@ public class wikiGame implements ActionListener {
                     taOutput.setText(readOutput); //sets all links to readoutput so readoutput is not considered null (dont know why that was an issue)
 
                     termCheck = taOutput.getText().split("\n"); //splits each link back into individual lines to be searched 1 by 1
+                    for (int i = 0; i < termCheck.length; i++) {
+                        if(Objects.equals(termCheck[i], manyTerms[0]))
+                        specCheck[i] = termCheck[i];
+                    }
                     for (int i = 0; i < manyTerms.length; i++) { //runs for loop for every search term identified
                         for (int j = 0; j < termCheck.length; j++) { //checks every line for a given search term
-                            if(termCheck[j].contains(manyTerms[i])){
+                            if(Objects.equals(termCheck[j], manyTerms[i])){
                                 finalOutput += termCheck[j] + "\n";
                             }
                         }
                     }
+                    System.out.println(finalOutput);
+                    System.out.println("Search Term: " + manyTerms[0]);
                     findLink(taLink.getText(),taSearch.getText(),maxDepth);
-
-                    taOutput.setText(finalOutput);
                 }
                 try {
                     reader.close();
@@ -214,9 +220,13 @@ public class wikiGame implements ActionListener {
 
             System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink);
 
+            for (int i = 0; i < termCheck.length; i++) {
+                //System.out.println("Spec Check: " + specCheck[i]);
+            }
+
             // BASE CASE
-            if (Objects.equals(finalOutput, endLink)) {
-                //taOutput.setText(endLink);
+            if (Objects.equals(termCheck[checkNumber], endLink)) {
+                taOutput.setText(endLink);
                 System.out.println(endLink);
                 return true;
             } else if (depth == maxDepth) {
@@ -226,7 +236,7 @@ public class wikiGame implements ActionListener {
             // GENERAL RECURSIVE CASE
             else {
                 findLink(taLink.getText(),taSearch.getText(),maxDepth);
-                depth++;
+                checkNumber++;
             }
 
             return false;
