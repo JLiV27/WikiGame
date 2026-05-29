@@ -33,7 +33,7 @@ public class wikiGame implements ActionListener {
     public String[] specCheck;
 
     public int maxDepth = 1;
-    public int checkNumber = 0;
+    public int checkNumber;
 
     public wikiGame() {
         prepareGUI();
@@ -217,18 +217,24 @@ public class wikiGame implements ActionListener {
         }
 
         public boolean findLink(String startLink, String endLink, int depth) {
-
+            System.out.println("Check Number: " + checkNumber);
+            checkNumber++;
             System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink);
 
-            for (int i = 0; i < termCheck.length; i++) {
-                //System.out.println("Spec Check: " + specCheck[i]);
+            String[] terms;
+
+            for (int i = 0; i < terms.length; i++) {
+                System.out.println(terms[i].toLowerCase());
+                terms = termCheck[i].split("\n");
             }
+            String search = endLink.toLowerCase();
 
             // BASE CASE
-            if (termCheck[checkNumber].contains(endLink)) {
-                System.out.println("ID " + checkNumber + ": " + termCheck[checkNumber]);
+            if (terms[checkNumber].contains(search)) {
+                System.out.println("ID " + checkNumber + ": " + terms[checkNumber]);
                 taOutput.setText(endLink);
                 System.out.println(endLink);
+                System.out.println("COMPLETE");
                 return true;
             } else if (depth == maxDepth) {
                 taOutput.setText("Could not parse Wiki Links");
@@ -237,7 +243,6 @@ public class wikiGame implements ActionListener {
             // GENERAL RECURSIVE CASE
             else {
                 findLink(taLink.getText(),taSearch.getText(),maxDepth);
-                checkNumber++;
             }
 
             return false;
