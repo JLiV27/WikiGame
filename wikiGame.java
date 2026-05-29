@@ -225,7 +225,8 @@ public class wikiGame implements ActionListener {
             }
 
             // BASE CASE
-            if (Objects.equals(termCheck[checkNumber], endLink)) {
+            if (termCheck[checkNumber].contains(endLink)) {
+                System.out.println("ID " + checkNumber + ": " + termCheck[checkNumber]);
                 taOutput.setText(endLink);
                 System.out.println(endLink);
                 return true;
