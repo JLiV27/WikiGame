@@ -217,26 +217,26 @@ public class wikiGame implements ActionListener {
         }
 
         public boolean findLink(String startLink, String endLink, int depth) {
-            System.out.println("Check Number: " + checkNumber);
+            System.out.println("Check Number: " + checkNumber); //sout to more easily check how many comparisons have been made
             checkNumber++;
-            System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink);
+            System.out.println("depth is: " + depth + ", link is: https://en.wikipedia.org" + startLink); //sout to show current checking progress
 
             String[] terms;
 
-            for (int i = 0; i < terms.length; i++) {
-                System.out.println(terms[i].toLowerCase());
+            for (int i = 0; i < termCheck.length; i++) {
+                System.out.println(termCheck[i].toLowerCase());
                 terms = termCheck[i].split("\n");
             }
             String search = endLink.toLowerCase();
 
             // BASE CASE
-            if (terms[checkNumber].contains(search)) {
-                System.out.println("ID " + checkNumber + ": " + terms[checkNumber]);
+            if (termCheck[checkNumber].contains(search)) { //Base case to check link against end link
+                System.out.println("ID " + checkNumber + ": " + termCheck[checkNumber]);
                 taOutput.setText(endLink);
                 System.out.println(endLink);
                 System.out.println("COMPLETE");
                 return true;
-            } else if (depth == maxDepth) {
+            } else if (depth == maxDepth) { //checks depth explored against the maxDepth
                 taOutput.setText("Could not parse Wiki Links");
             }
 
